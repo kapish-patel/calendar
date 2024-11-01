@@ -1,6 +1,6 @@
 
 const getEvents = async (accessToken) => {
-    const response = await fetch('/api/Events', {
+    const response = await fetch(`https://interview.civicplus.com/${process.env.REQUEST_PREFIX}/api/Events`, {
         method: 'GET',
         headers: {
             'Content-Type': 'text/plain',
@@ -16,7 +16,7 @@ const getEvents = async (accessToken) => {
 
 // function to post a new event
 const addEvent = async (accessToken, event) => {
-    const response = await fetch('/api/Events', {
+    const response = await fetch(`https://interview.civicplus.com/${process.env.REQUEST_PREFIX}/api/Events`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
