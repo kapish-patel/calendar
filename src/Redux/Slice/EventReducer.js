@@ -54,7 +54,7 @@ export const Events = createSlice({
             })
             .addCase(postEvent.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.events.push(action.payload);
+                state.events.unshift(action.payload);
                 state.TotalEvents++;
             })
             .addCase(postEvent.rejected, (state, action) => {
