@@ -1,6 +1,6 @@
 
 const getAccessToken = async () => {
-    const response = await fetch('/api/Auth', {
+    const response = await fetch(`https://interview.civicplus.com/${process.env.REQUEST_PREFIX}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
