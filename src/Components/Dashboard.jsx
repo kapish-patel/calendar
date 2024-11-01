@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEvents, postEvent } from '../Redux/Slice/EventReducer';
 import UseAcceessToken from '../Hooks/UseAccessToken';
+import SkeletonCard from './SkeletonCard';
 import { formatISO } from 'date-fns';
 import Card from './Card';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,6 +12,7 @@ function Dashboard() {
   const accessToken = UseAcceessToken();
   const events = useSelector((state) => state.Event.events);
   const totalEvents = useSelector((state) => state.Event.TotalEvents);
+  const status = useSelector((state) => state.Event.status);
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -18,7 +20,9 @@ function Dashboard() {
   const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
-    dispatch(fetchEvents(accessToken));
+    if (accessToken) { 
+        dispatch(fetchEvents(accessToken));
+    }
   }, [accessToken, dispatch]);
 
   const handleEventSubmit = (e) => {
@@ -58,6 +62,7 @@ function Dashboard() {
           <h2 className="text-lg font-semibold mb-4">Add New Event</h2>
           <form onSubmit={handleEventSubmit} className="grid grid-cols-6 gap-4">
             <input
+              name='title'
               type="text"
               placeholder="Event Title"
               value={title}
@@ -66,6 +71,7 @@ function Dashboard() {
               required
             />
             <input
+              name='description'
               type="text"
               placeholder="Event Description"
               value={description}
@@ -74,6 +80,7 @@ function Dashboard() {
               required
             />
             <input
+              name='startDate'
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
@@ -81,6 +88,7 @@ function Dashboard() {
               required
             />
             <input
+              name='endDate'
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
@@ -97,12 +105,15 @@ function Dashboard() {
       </div>
 
       {/* Events List with Scrollable Area */}
-      <div className="overflow-y-auto" style={{ maxHeight: 'calc(80vh)'}}>
-        {totalEvents > 0 
-          ? events.map((event, index) => <Card key={event.id} event={event} index={index} />)
-          : <h1>No Events</h1>
-        }
-      </div>
+      <div className="overflow-y-auto" style={{ maxHeight: 'calc(80vh)' }}>
+        {status === 'idle' ? (
+          Array.from({ length: 5 }).map((_, index) => <SkeletonCard key={index} />)
+          ) : totalEvents > 0 ? (
+            events.map((event, index) => <Card key={event.id} event={event} index={index} />)
+          ) : (
+            <h1>No Events</h1>
+          )}
+</div>
     </div>
   );
 }

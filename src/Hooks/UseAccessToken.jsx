@@ -1,15 +1,18 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react';
 import getAccessToken from '../Api/Auth';
 
-function UseAccessToken() {
+function useAccessToken() {
     const [accessToken, setAccessToken] = useState(null);
 
     useEffect(() => {
-        getAccessToken().then((access_token) => {
-            setAccessToken(access_token);
-        });
-    }, []);
-    return (accessToken);
+        if (!accessToken) {  // Only fetch if accessToken is not set
+            getAccessToken().then((access_token) => {
+                setAccessToken(access_token);
+            });
+        }
+    }, [accessToken]);  // Add accessToken as a dependency
+
+    return accessToken;
 }
 
-export default UseAccessToken
+export default useAccessToken;
