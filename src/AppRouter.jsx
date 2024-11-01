@@ -3,7 +3,7 @@ import Dashboard from './Components/Dashboard';
 const AppRouter = createBrowserRouter([
     {
         path: '/',
-        element: <Dashboard />
+        element: <Dashboard />,
     }
 ]);
 
