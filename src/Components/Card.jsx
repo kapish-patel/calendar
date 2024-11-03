@@ -1,3 +1,10 @@
+/**
+ * A functional component that displays an event card
+ * 
+ * @param {Object} event - The event object to display
+ * @param {Number} index - The index of the event in the list
+ * @returns A UI component displaying the event details
+ */
 function Card({ event, index }) {
   // Format the dates for display (assuming start and end dates are ISO strings)
   const startDate = new Date(event.startDate).toLocaleDateString('en-US', {

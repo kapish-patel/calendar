@@ -5,6 +5,11 @@ import UseAccessToken from '../Hooks/UseAccessToken';
 import EventForm from './EventForm';
 import EventList from './EventList';
 
+/**
+ * A UI Component to display the Dashboard with EventList and EventForm
+ * 
+ * @returns Dashboard Component
+ */
 function Dashboard() {
   const dispatch = useDispatch();
   const accessToken = UseAccessToken();

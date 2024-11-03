@@ -3,6 +3,12 @@ import { formatISO } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
 import { validateTitle, validateDescription, validateStartDate, validateEndDate } from '../services/ValidationService';
 
+/**
+ * A Form component to add a new event
+ * 
+ * @param {CallableFunction} onSubmit  A function to handle the form submission
+ * @returns a UI component to add a new event
+ */
 const EventForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -53,8 +59,7 @@ const EventForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="grid grid-cols-6 gap-4">
-      {/* Input fields with error display */}
-      {/* Title */}
+      
         <div className="col-span-2">
             <label htmlFor="title" className="text-gray-500 mb-1 block">Event Title</label>
             <input

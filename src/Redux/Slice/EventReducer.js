@@ -1,6 +1,13 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import {getEvents, addEvent} from '../..//Api/Events';
 
+/**
+ * Makes a request to the server to fetch all events from the database
+ * 
+ * @param {string} accessToken
+ * 
+ * @returns {Promise} Promise object represents the response from the server
+ */
 export const fetchEvents = createAsyncThunk('Events/fetchEvents', async (accessToken) => {
     try {
         const response = await getEvents(accessToken);
@@ -10,6 +17,15 @@ export const fetchEvents = createAsyncThunk('Events/fetchEvents', async (accessT
     }
 });
 
+/**
+ * Makes a request to the server to add a new event to the database
+ * 
+ * @param {object} data
+ * @param {string} data.accessToken
+ * @param {object} data.event
+ * 
+ * @returns {Promise} Promise object represents the response from the server
+ */
 export const postEvent = createAsyncThunk('Events/postEvent', async (data) => {
     try {
         const {accessToken, event} = data;
@@ -28,6 +44,7 @@ const initState = {
     error: null
 }
 
+// Slice containing the reducers for fetching and adding events
 export const Events = createSlice({
     name: 'Events',
     initialState: initState,

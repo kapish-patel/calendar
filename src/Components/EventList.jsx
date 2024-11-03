@@ -1,6 +1,13 @@
 import SkeletonCard from './SkeletonCard';
 import Card from './Card';
 
+/**
+ * A List component to display events and a loading skeleton.
+ * 
+ * @param {Array} events - An array of objects representing events.
+ * @param {String} status - A string representing the status of the fetch request.
+ * @returns A List of UI component representing events.
+ */
 const EventList = ({ events, status }) => {
   if (status === 'idle') {
     return Array.from({ length: 5 }).map((_, index) => <SkeletonCard key={index} />);

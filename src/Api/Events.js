@@ -1,4 +1,9 @@
-
+/**
+ * Fetch all events from the server using the access token
+ * 
+ * @param {String} accessToken 
+ * @returns payload which is an array of events
+ */
 const getEvents = async (accessToken) => {
     const response = await fetch(`https://interview.civicplus.com/${process.env.REQUEST_PREFIX}/api/Events`, {
         method: 'GET',
@@ -14,7 +19,13 @@ const getEvents = async (accessToken) => {
 };
 
 
-// function to post a new event
+/**
+ * Make a POST request to add an event.
+ * 
+ * @param {String} accessToken 
+ * @param {Object} event 
+ * @returns newly created event
+ */
 const addEvent = async (accessToken, event) => {
     const response = await fetch(`https://interview.civicplus.com/${process.env.REQUEST_PREFIX}/api/Events`, {
         method: 'POST',

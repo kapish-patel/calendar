@@ -1,3 +1,8 @@
+/**
+ * A UI component to display a loading skeleton for a card.
+ * 
+ * @returns a UI component to display a loading skeleton
+ */
 function SkeletonCard() {
     return (
       <div className="flex border border-gray-300 rounded-lg p-6 justify-between m-4 shadow-lg bg-white animate-pulse">
