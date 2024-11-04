@@ -1,5 +1,5 @@
 
-# Project Name
+# Project Name Calendar
 
 Calendar is an Event List Application that displays all your events in one place, allowing you to easily view and manage your schedule. Add new events to keep track of important dates and organize your plans efficiently.
 
