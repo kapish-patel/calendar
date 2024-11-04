@@ -89,7 +89,7 @@ Here are some useful commands:
 ## Tech Stack
 - **React** - JavaScript library for building UI
 - **Vite** - Fast build tool for modern web projects
-- **Tailwind CSS** (or any other styling framework you're using) - Utility-first CSS framework for rapid UI development
+- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
