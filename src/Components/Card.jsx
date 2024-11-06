@@ -21,11 +21,11 @@ function Card({ event, index }) {
   return (
     <div className='flex border border-gray-300 rounded-lg p-6 justify-between m-4 shadow-lg bg-white'>
       <div className='flex flex-col'>
-        <h1 className='font-montserrat text-4xl mb-2'>{event.title} #{++index}</h1>
-        <p className='font-poppins text-gray-700'>{event.description}</p>
+        <h1 className='font-montserrat text-4xl mb-2 break-words line-clamp-2'>{event.title} #{++index}</h1>
+        <p className='font-poppins text-gray-700 break-all overflow-hidden line-clamp-3 w-11/12'>{event.description}</p>
       </div>
 
-      <div className='flex items-center justify-center bg-gray-100 rounded-lg p-4'>
+      <div className='flex items-center justify-center bg-gray-100 rounded-lg p-4 min-w-fit'>
         <p className='font-montserrat text-center text-gray-800'>
           {startDate} - {endDate}
         </p>

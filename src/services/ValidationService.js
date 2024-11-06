@@ -5,6 +5,7 @@
  * @returns {String}return 'Title must not be empty' if title is empty.
  */
 export const validateTitle = (title) => {
+    // check if title is empty
     return title.length > 0 ? '' : 'Title must not be empty';
   };
   
@@ -38,7 +39,7 @@ export const validateStartDate = (startDate) => {
  */
 export const validateEndDate = (startDate, endDate) => {
     if (!endDate) return 'End date is required';
-    if (new Date(endDate) < new Date(startDate)) return 'End date must be after start date';
+    if (new Date(endDate) <= new Date(startDate)) return 'End date must be after start date';
     return '';
   };
   
